@@ -61,8 +61,8 @@ app.use(smsRoutes);
 //Rutas vistas de usuario
 app.use(usersRoutes);
 
-//Server port
 
+//Server port
 const PORT = process.env.PORT || 3000;
 //Connect DB
 mongoose
