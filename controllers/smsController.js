@@ -1,6 +1,6 @@
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const SmsTwilio = require('../models/smsTwilioModel');
-const SmsNexmo = require('../models/smsNexmoModel');
+const nodemailer = require('nodemailer');
 
 
 exports.postTwilioSMS = (req, res, next) => {
@@ -40,6 +40,26 @@ exports.postTwilioSMS = (req, res, next) => {
     console.log(err);
   });
 
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'grupo5.progrmacion.profesional@gmail.com',
+      pass: 'SOS_grupo5'
+    }
+  });
+  let mailOptions = {
+    from: 'grupo5.progrmacion.profesional@gmail.com',
+    to: 'izenteno22@gmail.com',
+    subject: 'Notificación de petición de auxilio.',
+    text: 'Se ha recibido una petición de auxilio de: ' + From + ' con la siguiente información: ' + Body
+  };
+  transporter.sendMail(mailOptions, (err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log('Email Enviado !!!!');
+    }
+  });
   twiml.message('Se ha recibido correctamente su SMS de emergencia');
   res.writeHead(200, {
     'Content-Type': 'text/xml'
