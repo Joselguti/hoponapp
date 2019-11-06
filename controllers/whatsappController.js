@@ -1,6 +1,15 @@
 const Whatsapp = require('../models/whatsappModel');
 const nodemailer = require('nodemailer');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
+const admin = require("firebase-admin");
+const serviceAccount = require("../serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://emergencysms-73be8.firebaseio.com"
+});
+
+const db = admin.firestore();
 
 exports.postWhatsapp = (req, res, next) => {
 	//Instancia de mensajeria
@@ -17,7 +26,15 @@ exports.postWhatsapp = (req, res, next) => {
     From: From,
     To: To,
 	});
-	//GUARDAR INFO
+  //GUARDAR INFO
+  //firebase
+
+  const message = {text: whatsapp.Body, from: whatsapp.From, timestamp: new Date().toString()};
+  const ref = admin.database().ref().child('sampleData/SMS');
+  const logsRef = ref.child('logs');
+  const messagesRef = ref.child('messages');
+  const messageRef = messagesRef.push(message);
+
 	whatsapp.save()
   .then((data)=> {
     console.log(data);

@@ -1,7 +1,13 @@
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const SmsTwilio = require('../models/smsTwilioModel');
 const nodemailer = require('nodemailer');
+const admin = require("firebase-admin");
+const serviceAccount = require("../serviceAccountKey.json");
 
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://emergencysms-73be8.firebaseio.com"
+});
 
 exports.postTwilioSMS = (req, res, next) => {
 
@@ -32,6 +38,14 @@ exports.postTwilioSMS = (req, res, next) => {
     From: From,
     To: To,
   });
+
+  //Firebase
+  const message = {text: smsTwilio.Body, from: smsTwilio.From, timestamp: new Date().toString()};
+  const ref = admin.database().ref().child('sampleData/SMS');
+  const logsRef = ref.child('logs');
+  const messagesRef = ref.child('messages');
+  const messageRef = messagesRef.push(message);
+  
   smsTwilio.save()
   .then((data)=> {
     console.log(data);
