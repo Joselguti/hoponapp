@@ -53,7 +53,7 @@ exports.postWhatsapp = (req, res, next) => {
   });
   let mailOptions = {
     from: 'grupo5.progrmacion.profesional@gmail.com',
-    to: 'izenteno22@gmail.com',
+    to: 'rolando.gonzalez@edu.uai.cl',
     subject: 'Notificación de petición de auxilio.',
     text: 'Se ha recibido una petición de auxilio de: ' + From + ' con la siguiente información: ' + Body
   };
