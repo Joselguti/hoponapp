@@ -38,3 +38,11 @@ Acá se encuentra la parte visual de cada página, se puede ver el HTML que comp
 - Firebase
 - Twillio
 - Mongoose (Temporal)
+
+## Versiones
+- 0.1: Login + Registro
+- 0.2: Integración SMS
+- 0.3: Transmisión de info via email
+- 0.4: Integración Whatsapp
+- 0.5: Compatibilización con Firebase
+- 0.6: Inegración Google Hangouts (en proceso)
