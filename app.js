@@ -31,6 +31,8 @@ const authRoutes = require('./routes/auth');
 const smsRoutes = require('./routes/sms');
 //Ruta para vistas de usuario
 const usersRoutes = require('./routes/users');
+//Ruta para whatsapp
+const whatsappRoutes = require('./routes/whatsapp');
 
 //Middlewares - Encode Body + Static Files
 app.use(
@@ -60,6 +62,8 @@ app.use(authRoutes);
 app.use(smsRoutes);
 //Rutas vistas de usuario
 app.use(usersRoutes);
+//Rutas whatsapp
+app.use(whatsappRoutes);
 
 
 //Server port
