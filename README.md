@@ -8,6 +8,10 @@ De manera alternativa, se está trabajando con WhatsApp, ya que esta app tiene u
 ## Futuro iMessage
 iMessage es solo gratis entre iPhones, cuando se mandan mensajes desde un iPhone a otro celular no iPhone es un simple sms. Su implementación requiere de una app nativa, por lo que se vuelve más compleja la implementación.
 
+## Sobre Hangouts
+Para poder tener correctamente un bot funcional sobre la plataforma de Hangouts, es necesario tener una cuenta "Google Suite"
+Dado que hangouts está en proceso de cambio hacia google chat, se modificará el bot hacia esa plataforma.
+
 ## Instalaciones necesarias
 - Node: [Node.js](https://nodejs.org/en/)
 - Npm: [npm | build amazing things](https://www.npmjs.com/)
@@ -35,6 +39,8 @@ Toma el request para la página home e indica el view a mostrar correspondiente
 Hace la solicitud de información al modelo de Twilio, Firebase para mostrar la info de los mensajes recibidos. Adicionalmente envía un correo con la información del mensaje recibido.
 #### whatsappController.js
 Hace la solicitud de información al modelo de WhatsApp, Firebase para mostrar la info de los mensajes recibidos. Adicionalmente envía un correo con la información del mensaje recibido.
+#### hangoutsController.js
+Hace la solicitud de información al modelo de Hangouts, recibe y manda mensajes al usuario
 
 ### Models
 Acá se encuentran los puentes hacia las BD, manejan el envío y recepción de información hacia y desde la BD
@@ -46,6 +52,8 @@ Define el esquema de los datos a recibir o enviar a la BD de Twilio.
 Define el esquema de datos para trabajar el sistema de usuarios.
 #### whatsappModel.js
 Define el esquema de los datos a recibir o enviar a la BD de WhatsApp.
+#### hangoutsModel.js
+Define el esquema de los datos a recibir o enviar a la BD de Hangouts.
 
 ### Public
 Elementos a los cuales acceden las distintas views, sea imágenes, favicons y el CSS
@@ -64,11 +72,13 @@ No está en uso actualmente
 #### home.js
 Se encarga de enviar el request al controlador homeController en caso de una solicitud de la página Home o de About Us. Este controlador se encarga de ambas páginas
 #### sms.js
-Se encarga de enviar el request al controlador smsController
+Se encarga de enviar el request al controlador smsController, con la función respectiva que se hará cargo de la solicitud
 #### users.js
-Se encarga de enviar el request al controlador dashboardController
+Se encarga de enviar el request al controlador dashboardController, con la función respectiva que se hará cargo de la solicitud
 #### whatsapp.js
-Se encarga de enviar el request al controlador whatsappController
+Se encarga de enviar el request al controlador whatsappController, con la función respectiva que se hará cargo de la solicitud
+#### hangouts.js
+Se encarga de enviar el request al controlador hangoutsController, con la función respectiva que se hará cargo de la solicitud
 
 ### Views
 Acá se encuentra la parte visual de cada página, se puede ver el HTML que compone cada página y por lo tanto, editar el front end que ve el usuario
