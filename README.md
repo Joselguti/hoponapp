@@ -1,4 +1,3 @@
-# SMSprojectUAI
 ## Descripción
 EL proyecto consta de la creación de una conexión entre un end device, un servidor y posteriormente transmitir esa información a una entidad de seguridad (carabineros, bomberos, ambulancia, etc). Se recibe un sms, iMessage o mensaje de Hangouts y la información contenida en el mensaje se envía a un servidor para que esta a su vez sea enviada a la entidad de seguridad.
 Para el manejo de recepción de información se está trabajando con Twilio y el servidor que recibe la info está en Firebase.
