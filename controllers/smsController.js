@@ -1,13 +1,6 @@
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const SmsTwilio = require('../models/smsTwilioModel');
 const nodemailer = require('nodemailer');
-const admin = require("firebase-admin");
-const serviceAccount = require("../serviceAccountKey.json");
-
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://emergencysms-73be8.firebaseio.com"
-});
 
 exports.postTwilioSMS = (req, res, next) => {
 

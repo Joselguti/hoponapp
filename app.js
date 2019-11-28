@@ -8,6 +8,14 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
+const admin = require("firebase-admin");
+const serviceAccount = require("./serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://emergencysms-73be8.firebaseio.com"
+});
+
 //URI de mongo
 const MongoDB_URI =
   'mongodb+srv://SMS_nodeApp:mvGx8TZJ5R7g5c5l@cluster0-kcdyy.mongodb.net/test?retryWrites=true&w=majority';
@@ -34,7 +42,11 @@ const usersRoutes = require('./routes/users');
 //Ruta para whatsapp
 const whatsappRoutes = require('./routes/whatsapp');
 //Ruta para hangouts
+
+
+
 const hangoutsRoutes = require('./routes/hangouts');
+
 
 //Middlewares - Encode Body + Static Files
 app.use(
@@ -67,7 +79,9 @@ app.use(usersRoutes);
 //Rutas whatsapp
 app.use(whatsappRoutes);
 //Rutas hangouts
+
 app.use(hangoutsRoutes);
+
 
 
 //Server port
