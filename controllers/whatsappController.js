@@ -4,11 +4,6 @@ const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const admin = require("firebase-admin");
 const serviceAccount = require("../serviceAccountKey.json");
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://emergencysms-73be8.firebaseio.com"
-});
-
 const db = admin.firestore();
 
 exports.postWhatsapp = (req, res, next) => {
@@ -46,14 +41,19 @@ exports.postWhatsapp = (req, res, next) => {
 	//EMAIL
 	let transporter = nodemailer.createTransport({
     service: 'gmail',
+    secure: false, // use SSL
+    port: 25, // port for secure SMTP
     auth: {
       user: 'grupo5.progrmacion.profesional@gmail.com',
       pass: 'SOS_grupo5'
+    },
+    tls: {
+       rejectUnauthorized: false
     }
   });
   let mailOptions = {
     from: 'grupo5.progrmacion.profesional@gmail.com',
-    to: 'rolando.gonzalez@edu.uai.cl',
+    to: ['rolando.gonzalez@edu.uai.cl', 'anromano@alumnos.uai.cl', 'jgutisan1@gmail.com', 'Rzenteno@alumnos.uai.cl'],
     subject: 'Notificación de petición de auxilio.',
     text: 'Se ha recibido una petición de auxilio de: ' + From + ' con la siguiente información: ' + Body
   };
