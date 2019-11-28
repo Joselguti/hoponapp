@@ -33,6 +33,8 @@ const smsRoutes = require('./routes/sms');
 const usersRoutes = require('./routes/users');
 //Ruta para whatsapp
 const whatsappRoutes = require('./routes/whatsapp');
+//Ruta para hangouts
+
 
 //Middlewares - Encode Body + Static Files
 app.use(
@@ -64,6 +66,8 @@ app.use(smsRoutes);
 app.use(usersRoutes);
 //Rutas whatsapp
 app.use(whatsappRoutes);
+//Rutas hangouts
+
 
 
 //Server port
