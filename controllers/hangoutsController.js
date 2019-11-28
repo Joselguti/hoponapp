@@ -3,10 +3,7 @@ const admin = require("firebase-admin");
 const serviceAccount = require("../serviceAccountKey.json");
 const Hangouts = require('../models/hangoutsModel');
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://emergencysms-73be8.firebaseio.com"
-});
+
 
 const db = admin.firestore();
 
