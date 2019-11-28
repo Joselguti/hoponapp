@@ -36,6 +36,10 @@ const whatsappRoutes = require('./routes/whatsapp');
 //Ruta para hangouts
 
 
+
+const hangoutsRoutes = require('./routes/hangouts');
+
+
 //Middlewares - Encode Body + Static Files
 app.use(
   bodyParser.urlencoded({
@@ -67,6 +71,8 @@ app.use(usersRoutes);
 //Rutas whatsapp
 app.use(whatsappRoutes);
 //Rutas hangouts
+
+app.use(hangoutsRoutes);
 
 
 
